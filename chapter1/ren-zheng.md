@@ -52,11 +52,38 @@ assport.authenticate('local', { failureFlash: 'Invalid username or password.' })
 passport.authenticate('local', { successFlash: 'Welcome!' });
 ```
 
-注意：使用`Flash`消息需要一个`req.flash()`函数。 Express 2.x提供了此功能，但是从Express 3.x中删除。所以在Express 3.x建议使用[connect-flash](https://github.com/jaredhanson/connect-flash)中间件来提供这个功能。
+注意：使用消息提示需要一个`req.flash()`函数。 `Express 2.x`提供了此功能，但是从`Express 3.x`中删除。所以在`Express 3.x`建议使用`connect-flash`或`express-flash`中间件来提供这个功能。
 
 ### 禁用session
 
+验证成功后，Passport将建立持久的登录session。这对于通过浏览器访问Web应用程序的用户的常见情况非常有用。但是，在某些情况下，不需要session支持。例如，API服务器通常需要为每个请求提供凭据。在这种情况下，会话支持可以通过将会话选项设置为false来安全地禁用
+
+```js
+app.get('/api/users/me',
+  passport.authenticate('basic', { session: false }),
+  function(req, res) {
+    res.json({ id: req.user.id, username: req.user.username });
+  });
+```
+
 ### 自定义回调
+
+如果内置选项不足以处理身份验证请求，则可以提供自定义回调以允许应用程序处理成功或失败
+
+```js
+app.get('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.redirect('/login'); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.redirect('/users/' + user.username);
+    });
+  })(req, res, next);
+});
+```
+
+在此示例中，请注意，`authenticate()`从路由处理程序中调用，而不是用作路由中间件。
 
 
 
