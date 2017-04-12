@@ -6,3 +6,16 @@ Passport可以识别每个应用唯一的身份认证要求。认证机制，又
 
 尽管认证很复杂，但代码不一定要复杂。
 
+```js
+app.post('/login', passport.authenticate('local', { successRedirect: '/',
+                                                    failureRedirect: '/login' }));
+```
+
+### 安装
+
+```bash
+$ npm install passport
+```
+
+
+
