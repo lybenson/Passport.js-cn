@@ -14,3 +14,41 @@ app.post('/login',
 
 注意：策略必须在路由中使用之前进行配置。有关详细信息，请继续阅读有关配置的章节。
 
+### 重定向
+
+通常在验证请求后发出重定向
+
+```js
+app.post('/login',
+  passport.authenticate('local', { successRedirect: '/',
+                                   failureRedirect: '/login' }));
+```
+
+在这种情况下，重定向选项会覆盖默认行为。成功认证后，用户将被重定向到主页，如果身份验证失败，用户将被重定向回登录页面。
+
+## Flash Messages {#flash-messages}
+
+重定向通常与闪存消息组合，以向用户显示状态信息。
+
+```js
+app.post('/login',
+  passport.authenticate('local', { successRedirect: '/',
+                                   failureRedirect: '/login',
+                                   failureFlash: true })
+);
+```
+
+将failureFlash选项设置为true会指示Passport使用策略验证回调给出的消息来闪烁错误消息
+
+### 禁用session
+
+
+
+### 自定义回调
+
+
+
+
+
+
+
