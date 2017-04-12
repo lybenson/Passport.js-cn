@@ -4,7 +4,7 @@
 * [通用](chapter1.md)
   * [概述](chapter1/gai-shu.md)
   * [认证](chapter1/ren-zheng.md)
-  * 配置
+  * [配置](chapter1/pei-zhi.md)
   * Username & Password
   * OpenID
   * OAuth
