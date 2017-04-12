@@ -40,19 +40,19 @@ app.post('/login',
 
 将`failureFlash`选项设置为`true`会指示`Passport`使用策略验证回调给出的消息来显示错误消息。这通常是最好的方法，因为验证回调可以最准确地确定身份验证失败的原因。
 
-或者，可以设置自定义的消息提示
+或者，可以设置自定义的消息提示。
 
 ```js
 assport.authenticate('local', { failureFlash: 'Invalid username or password.' });
 ```
 
-一个successFlash选项是可用的，当验证成功时闪烁成功消息
+当认证成功时显示成功消息，可以使用`successFlash`选项。
 
 ```js
 passport.authenticate('local', { successFlash: 'Welcome!' });
 ```
 
-注意：使用Flash消息需要一个req.flash（）函数。 Express 2.x提供了此功能，但是从Express 3.x中删除。使用连接闪存中间件是 建议在使用Express 3.x时提供此功能。
+注意：使用`Flash`消息需要一个`req.flash()`函数。 Express 2.x提供了此功能，但是从Express 3.x中删除。所以在Express 3.x建议使用[connect-flash](https://github.com/jaredhanson/connect-flash)中间件来提供这个功能。
 
 ### 禁用session
 
