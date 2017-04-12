@@ -3,7 +3,7 @@
 * [介绍](README.md)
 * [通用](chapter1.md)
   * [概述](chapter1/gai-shu.md)
-  * 认证
+  * [认证](chapter1/ren-zheng.md)
   * 配置
   * Username & Password
   * OpenID
