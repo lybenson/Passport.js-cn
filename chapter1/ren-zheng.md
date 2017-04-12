@@ -26,9 +26,9 @@ app.post('/login',
 
 在这种情况下，重定向选项会覆盖默认行为。成功认证后，用户将被重定向到主页，如果身份验证失败，用户将被重定向回登录页面。
 
-## Flash Messages {#flash-messages}
+## 消息提示 {#flash-messages}
 
-重定向通常与闪存消息组合，以向用户显示状态信息。
+重定向通常与消息提示组合，以向用户显示状态信息。
 
 ```js
 app.post('/login',
@@ -38,17 +38,25 @@ app.post('/login',
 );
 ```
 
-将failureFlash选项设置为true会指示Passport使用策略验证回调给出的消息来闪烁错误消息
+将`failureFlash`选项设置为`true`会指示`Passport`使用策略验证回调给出的消息来显示错误消息。这通常是最好的方法，因为验证回调可以最准确地确定身份验证失败的原因。
+
+或者，可以设置自定义的消息提示
+
+```js
+assport.authenticate('local', { failureFlash: 'Invalid username or password.' });
+```
+
+一个successFlash选项是可用的，当验证成功时闪烁成功消息
+
+```js
+passport.authenticate('local', { successFlash: 'Welcome!' });
+```
+
+注意：使用Flash消息需要一个req.flash（）函数。 Express 2.x提供了此功能，但是从Express 3.x中删除。使用连接闪存中间件是 建议在使用Express 3.x时提供此功能。
 
 ### 禁用session
 
-
-
 ### 自定义回调
-
-
-
-
 
 
 
