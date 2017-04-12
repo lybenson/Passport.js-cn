@@ -5,7 +5,7 @@
   * [概述](chapter1/gai-shu.md)
   * [认证](chapter1/ren-zheng.md)
   * [配置](chapter1/pei-zhi.md)
-  * Username & Password
+  * [Username & Password](chapter1/username-and-password.md)
   * OpenID
   * OAuth
   * 用户配置
