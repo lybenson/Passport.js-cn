@@ -36,11 +36,77 @@ passport.use(new LocalStrategy(
 
 这个例子介绍一个重要的概念。策略需要验证回调，目的是找到拥有一组凭据的用户。
 
-当`Passport`验证请求时，它将解析请求中包含的凭据。然后，它将使用这些凭据作为参数调用验证回调，在本例中为`username`和`password`。如果凭据可用，则验证回调函数调用`done`函数，以向验证的用户提供`Passport`
+当`Passport`验证请求时，它将解析请求中包含的凭据\(请求中的参数\)。然后，它将使用这些凭据作为参数调用验证回调，在本例中为`username`和`password`。如果凭据可用，则验证回调函数调用`done`函数，以向验证的用户提供`Passport`
 
 ```js
 return done(null, user);
 ```
+
+如果凭证无效\(例如，如果密码不正确\)，则应使用`false`调用完成，而不是用户来指示身份验证失败。
+
+```js
+return done(null, false);
+```
+
+可以提供附加的信息消息来表明失败的原因。显示这个信息对于提示用户去修改代码是很有用的。
+
+```js
+return done(null, false, { message: 'Incorrect password.' });
+```
+
+最后，如果在验证凭据时发生异常\(例如，如果数据库不可用\)，`done`应该提供一个`error`参数。
+
+```js
+return done(err);
+```
+
+注：区分可能发生的两个故障情况很重要，后者是一个服务器异常，其中err设置为非空值，认证失败是服务器正常运行的自然条件。确保err保持为空，并使用final参数传递其他详细信息。
+
+通过以这种方式委派，验证回调使Passport数据库不可知。应用程序可以自由选择如何存储用户信息，而不需要认证层施加任何假设
+
+### 中间件
+
+在Connect或Express-based的应用中，需要passport.initialize（）中间件来初始化Passport。如果您的应用程序使用持久性登录会话，也必须使用passport.session（）中间件。
+
+```js
+app.configure(function() {
+  app.use(express.static('public'));
+  app.use(express.cookieParser());
+  app.use(express.bodyParser());
+  app.use(express.session({ secret: 'keyboard cat' }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(app.router);
+});
+```
+
+注：该支持会话支持是完全可选的，尽管建议大多数应用程序。如果启用，请务必在passport.session（）之前使用express.session（），以确保以正确的顺序恢复登录会话。
+
+### Sessions
+
+在典型的Web应用程序中，用于验证用户的凭据只能在登录请求期间传输。如果认证成功，将通过用户浏览器中设置的cookie建立和维护会话。
+
+每个后续请求将不包含凭据，而是唯一标识会话的cookie。为了支持登录session，Passport将会将会话中的用户实例序列化和反序列化。
+
+```js
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+```
+
+在该示例中，仅将用户ID序列化到session中，保持会话中存储的数据量较小。当接收到后续请求时，该ID用于查找用户并将被存储到req.user中。
+
+
+
+
+
+
 
 
 
