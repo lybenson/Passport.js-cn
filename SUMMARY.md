@@ -7,8 +7,8 @@
   * [认证](chapter1/ren-zheng.md)
   * [Username & Password](chapter1/username-and-password.md)
   * [OpenID](chapter1/openid.md)
-  * OAuth
-  * 用户配置
+  * [OAuth](chapter1/oauth.md)
+  * [用户配置](chapter1/yong-hu-pei-zhi.md)
 * 第三方支持
   * Facebook
   * Twitter
