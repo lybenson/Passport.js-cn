@@ -48,7 +48,7 @@ passport.use(new OpenIDStrategy({
 
 ### 路由
 
-`OpenID`身份验证需要两个路由。第一个路由接受包含`OpenID`标识符的表单提交。在认证期间，用户将被重定向到其OpenID提供者。第二条路由是用户在与OpenID提供者进行身份验证后将被返回的URL。
+`OpenID`身份验证需要两个路由。第一个路由接受包含`OpenID`标识符的表单提交。在认证期间，用户将被重定向到其`OpenID`提供者。第二条路由是用户在与`OpenID`提供者进行身份验证后将被返回的URL。
 
 ```js
 // 接受OpenID标识符并将用户重定向到其OpenID验证提供者去验证。
@@ -61,6 +61,46 @@ app.get('/auth/openid/return',
   passport.authenticate('openid', { successRedirect: '/',
                                     failureRedirect: '/login' }));
 ```
+
+### 信息交换
+
+可以选择将`OpenID`配置为检索关于被认证的用户信息，通过将`profile`选项设置为`true`来启用配置文件交换。
+
+```js
+passport.use(new OpenIDStrategy({
+    returnURL: 'http://www.example.com/auth/openid/return',
+    realm: 'http://www.example.com/',
+    profile: true
+  },
+  function(identifier, profile, done) {
+    // ...
+  }
+));
+```
+
+启用配置文件交换时，验证回调的函数签名接受包含由OpenID提供者提供的用户简档信息的附加配置文件参数。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
