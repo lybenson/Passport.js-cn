@@ -60,13 +60,13 @@ return done(null, false, { message: 'Incorrect password.' });
 return done(err);
 ```
 
-注：区分可能发生的两个失败情况很重要，一个是服务器异常，其中`err`会被设置为非空值。另一个失败情况是认证失败，其是正常的错误。需确保err保持为空，使用最后的参数传递其他详细信息。
+注：区分可能发生的两个失败情况很重要，一个是服务器异常，其中`err`会被设置为非空值。另一个失败情况是认证失败，其是正常的错误，所以需确保`err`为空，并使用最后的参数`message`传递其他详细信息。
 
-通过以这种方式委派，验证回调使Passport数据库不可知。应用程序可以自由选择如何存储用户信息，而不需要认证层施加任何假设
+通过以这种方式委派，验证回调使`Passport`数据库不可知。应用程序可以自由选择如何存储用户信息，而不需要认证层施加任何假设。
 
 ### 中间件
 
-在Connect或Express-based的应用中，需要passport.initialize（）中间件来初始化Passport。如果您的应用程序使用持久性登录会话，也必须使用passport.session（）中间件。
+在基于`Connect`或`Express`的应用程序中，需要使用`passport.initialize()`中间件来初始化`Passport`。如果您的应用程序使用持久性登录session，也必须使用`passport.session()`中间件。
 
 ```js
 app.configure(function() {
@@ -80,13 +80,13 @@ app.configure(function() {
 });
 ```
 
-注：该支持会话支持是完全可选的，尽管建议大多数应用程序。如果启用，请务必在passport.session（）之前使用express.session（），以确保以正确的顺序恢复登录会话。
+注：该支持会话支持是完全可选的，尽管建议大多数应用程序。如果启用，请务必在`passport.session()`之前使用`express.session()`，以确保以正确的顺序恢复登录的`session`。
 
 ### Sessions
 
-在典型的Web应用程序中，用于验证用户的凭据只能在登录请求期间传输。如果认证成功，将通过用户浏览器中设置的cookie建立和维护会话。
+在典型的Web应用程序中，用于验证用户的凭据只能在登录请求期间传输。如果认证成功，将通过用户浏览器中设置的`cookie`建立和维护`session`。
 
-每个后续请求将不包含凭据，而是唯一标识会话的cookie。为了支持登录session，Passport将会将会话中的用户实例序列化和反序列化。
+每个后续请求将不包含凭据，而是唯一标识会话的`cookie`。为了支持登录`session`，`Passport`将会将`session`中的用户实例序列化和反序列化。
 
 ```js
 passport.serializeUser(function(user, done) {
@@ -100,7 +100,9 @@ passport.deserializeUser(function(id, done) {
 });
 ```
 
-在该示例中，仅将用户ID序列化到session中，保持会话中存储的数据量较小。当接收到后续请求时，该ID用于查找用户并将被存储到req.user中。
+在该示例中，仅将用户ID序列化到`session`中，保持会话中存储的数据量较小。当接收到后续请求时，该ID用于查找用户并将被存储到`req.user`中。
 
 序列化和反序列化逻辑由应用程序提供，允许应用程序选择适当的数据库和/或对象映射器，而不需要认证层的强制。
+
+
 
