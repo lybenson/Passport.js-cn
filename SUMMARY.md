@@ -3,10 +3,10 @@
 * [介绍](README.md)
 * [通用](chapter1.md)
   * [概述](chapter1/gai-shu.md)
-  * [认证](chapter1/ren-zheng.md)
   * [配置](chapter1/pei-zhi.md)
+  * [认证](chapter1/ren-zheng.md)
   * [Username & Password](chapter1/username-and-password.md)
-  * OpenID
+  * [OpenID](chapter1/openid.md)
   * OAuth
   * 用户配置
 * 第三方支持

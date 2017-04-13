@@ -43,7 +43,7 @@ app.post('/login',
 或者，可以设置自定义的消息提示。
 
 ```js
-assport.authenticate('local', { failureFlash: 'Invalid username or password.' });
+passport.authenticate('local', { failureFlash: 'Invalid username or password.' });
 ```
 
 当认证成功时显示成功消息，可以使用`successFlash`选项。
@@ -88,14 +88,4 @@ app.get('/login', function(req, res, next) {
 如果认证失败，`user`将被设置为`false`。如果发生异常，将设置`err`。将传递一个可选的`info`参数，其中包含策略验证回调提供的其他详细信息。
 
 回调可以使用提供的参数来处理认证结果，请注意，使用自定义回调时，应用程序有责任建立`session`\(通过调用`req.login()`\)并发送响应。
-
-
-
-
-
-
-
-
-
-
 

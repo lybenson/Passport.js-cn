@@ -66,7 +66,7 @@ return done(err);
 
 ### 中间件
 
-在基于`Connect`或`Express`的应用程序中，需要使用`passport.initialize()`中间件来初始化`Passport`。如果您的应用程序使用持久性登录session，也必须使用`passport.session()`中间件。
+在基于`Connect`或`Express`的应用程序中，需要使用`passport.initialize()`中间件来初始化`Passport`。如果您的应用程序使用持久性登录`session`，也必须使用`passport.session()`中间件。
 
 ```js
 app.configure(function() {
@@ -80,7 +80,7 @@ app.configure(function() {
 });
 ```
 
-注：该支持会话支持是完全可选的，尽管建议大多数应用程序。如果启用，请务必在`passport.session()`之前使用`express.session()`，以确保以正确的顺序恢复登录的`session`。
+注：对`session`的支持完全是可选的，尽管建议大多数应用程序使用。如果启用，请务必在`passport.session()`之前使用`express.session()`，以确保以正确的顺序恢复登录的`session`。
 
 ### Sessions
 
@@ -103,6 +103,4 @@ passport.deserializeUser(function(id, done) {
 在该示例中，仅将用户ID序列化到`session`中，保持会话中存储的数据量较小。当接收到后续请求时，该ID用于查找用户并将被存储到`req.user`中。
 
 序列化和反序列化逻辑由应用程序提供，允许应用程序选择适当的数据库和/或对象映射器，而不需要认证层的强制。
-
-
 
