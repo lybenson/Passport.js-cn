@@ -13,7 +13,7 @@
   * [Facebook](di-san-fang-zhi-chi/facebook.md)
   * [Twitter](di-san-fang-zhi-chi/twitter.md)
   * [Google](di-san-fang-zhi-chi/google.md)
-  * 其他
+  * [其他](di-san-fang-zhi-chi/qi-ta.md)
 * APIS
   * 基本摘要
   * OAuth

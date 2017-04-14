@@ -74,11 +74,11 @@ app.get('/auth/provider/callback',
 
 ### Oauth 2.0
 
-`OAuth 2.0`继承于`OAuth 1.0`，旨在克服早期版本中发现的缺点。认证流程基本相同。用户首先被重定向到服务提供商以授权访问。之后授权成功后，用户跳转回应用并携带可用于数据访问的`access token`。请求访问的应用程序（称为客户端）其是由ID和secret标识。
+`OAuth 2.0`继承于`OAuth 1.0`，旨在克服早期版本中发现的缺点。认证流程基本相同。用户首先被重定向到服务提供商以授权访问。之后授权成功后，用户跳转回应用并携带可用于数据访问的`access token`。请求访问的应用程序（称为客户端）其是由`ID`和`secret`标识。
 
 #### 配置
 
-当使用通用OAuth 2.0策略时，客户端ID，客户端秘钥和回调被指定为可选项。
+当使用通用`OAuth 2.0`策略时，客户端`ID`，客户端秘钥和回调被指定为可选项。
 
 ```js
 var passport = require('passport')
@@ -99,11 +99,11 @@ passport.use('provider', new OAuth2Strategy({
 ));
 ```
 
-基于OAuth 2.0的策略的验证回调函数接受accessToken，refreshToken和profile参数。refreshToken可用于获取新的accessToken，如果提供商不返回refreshToken，则可能未定义。`profile`包含由服务提供商提供的用户信息。
+基于`OAuth 2.0`的策略的验证回调函数接受`accessToken`，`refreshToken`和`profile`参数。`refreshToken`可用于获取新的`accessToken`，如果提供商不返回`refreshToken`，则可能未定义。`profile`包含由服务提供商提供的用户信息。
 
 #### 路由
 
-OAuth 2.0身份验证需要两条路由。第一个路由将用户重定向到服务提供商。第二个路由是用户在与提供商进行身份验证之后被重定向到的URL。
+`OAuth 2.0`身份验证需要两条路由。第一个路由将用户重定向到服务提供商。第二个路由是用户在与提供商进行身份验证之后被重定向到的`URL`。
 
 ```js
 // 将用户重定向到OAuth 2.0提供商进行身份验证.
@@ -120,6 +120,32 @@ app.get('/auth/provider/callback',
 ```
 
 #### 范围
+
+当使用`OAuth 2.0`请求访问时，访问范围由`scope`选项控制。
+
+```js
+app.get('/auth/provider',
+  passport.authenticate('provider', { scope: 'email' })
+);
+```
+
+可以将多个`scope`指定为数组
+
+```js
+app.get('/auth/provider',
+  passport.authenticate('provider', { scope: ['email', 'sms'] })
+);
+```
+
+范围选项的值是提供商特定的。有关支持的范围的详细信息，请咨询提供商的文档。
+
+#### 链接
+
+一个链接或按钮可以被放置在一个网页上，点击时开始认证过程
+
+```html
+<a href="/auth/provider">Log In with OAuth 2.0 Provider</a>
+```
 
 
 
