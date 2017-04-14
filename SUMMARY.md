@@ -17,7 +17,7 @@
 * APIS
   * [Basic & Digest](ji-ben-zhai-yao.md)
   * [OAuth](oauth.md)
-  * OAuth2.0
+  * [OAuth2.0](oauth20.md)
   * [其他](qi-ta.md)
   * 认证方式流程
 * 操作
