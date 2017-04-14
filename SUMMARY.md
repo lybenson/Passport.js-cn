@@ -8,7 +8,7 @@
   * [Username & Password](chapter1/username-and-password.md)
   * [OpenID](chapter1/openid.md)
   * [OAuth](chapter1/oauth.md)
-  * [用户配置](chapter1/yong-hu-pei-zhi.md)
+  * [用户信息](chapter1/yong-hu-pei-zhi.md)
 * [第三方支持](di-san-fang-zhi-chi.md)
   * [Facebook](di-san-fang-zhi-chi/facebook.md)
   * [Twitter](di-san-fang-zhi-chi/twitter.md)
