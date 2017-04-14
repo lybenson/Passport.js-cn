@@ -15,10 +15,11 @@
   * [Google](di-san-fang-zhi-chi/google.md)
   * [其他](di-san-fang-zhi-chi/qi-ta.md)
 * APIS
-  * 基本摘要
-  * OAuth
+  * [Basic & Digest](ji-ben-zhai-yao.md)
+  * [OAuth](oauth.md)
   * OAuth2.0
-  * 其他
+  * [其他](qi-ta.md)
+  * 认证方式流程
 * 操作
   * 登录
   * 登出
