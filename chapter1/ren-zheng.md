@@ -56,7 +56,7 @@ passport.authenticate('local', { successFlash: 'Welcome!' });
 
 ### 禁用session
 
-验证成功后，Passport将建立持久的登录session。这对于通过浏览器访问Web应用程序的用户的常见情况非常有用。但是，在某些情况下，不需要session支持。例如，API服务器通常需要为每个请求提供凭据。在这种情况下，会话支持可以通过将会话选项设置为false来安全地禁用
+验证成功后，`Passport`将建立持久的登录`session`。这对于通过浏览器访问`Web`应用程序的用户的常见情况非常有用。但是，在某些情况下，不需要`session`支持。例如，`API`服务器通常需要为每个请求提供凭据。在这种情况下，会话支持可以通过将会话选项设置为`false`来安全地禁用
 
 ```js
 app.get('/api/users/me',

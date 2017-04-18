@@ -52,7 +52,7 @@ passport.use(new LocalStrategy(
 
 ### 路由
 
-登录表单通过POST方法提交给服务器。使用`authenticate()`与`local`策略处理登录请求。
+登录表单通过`POST`方法提交给服务器。使用`authenticate()`与`local`策略处理登录请求。
 
 ```js
 app.post('/login',

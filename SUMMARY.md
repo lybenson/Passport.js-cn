@@ -20,7 +20,7 @@
   * [OAuth2.0](oauth20.md)
   * [其他](qi-ta.md)
   * [认证方式流程](ren-zheng-fang-shi-liu-cheng.md)
-* 操作
+* [操作](cao-zuo.md)
   * [登录](deng-lu.md)
   * [登出](deng-chu.md)
   * [授权](shou-quan.md)

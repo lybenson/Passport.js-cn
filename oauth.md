@@ -4,7 +4,7 @@
 
 虽然`OAuth 1.0`仍然被广泛使用，但它已被`OAuth 2.0`所取代。建议使用`OAuth 2.0`。
 
-使用`OAuth`保护API端点时，必须执行三个不同的步骤:
+使用`OAuth`保护`API`端点时，必须执行三个不同的步骤:
 
 1. 应用程序请求用户访问受保护资源的权限。
 
@@ -14,7 +14,7 @@
 
 ### 发出令牌token
 
-[OAuthorize](https://github.com/jaredhanson/oauthorize)，是`Passport`的同类型项目。其提供了一个实现`OAuth`服务提供商的工具包。
+[`OAuthorize`](https://github.com/jaredhanson/oauthorize)，是`Passport`的同类型项目。其提供了一个实现`OAuth`服务提供商的工具包。
 
 授权过程有着复杂的步骤，涉及对应用和用户的认证，并提示用户权限，这样来确保为用户做出明智的决定提供足够的细节。
 
@@ -67,7 +67,7 @@ passport.use('token', new TokenStrategy(
 
 第一个回调被称为“消费者回调”，用于查找发出请求的应用程序，包括分配秘钥`secret`。
 
-第二个回调被称为“令牌回调”，用于识别用户以及令牌对应的秘钥。消费者提供的secret和令牌回调用于计算签名，如果与请求签名不匹配，则认证失败。
+第二个回调被称为“令牌回调”，用于识别用户以及令牌对应的秘钥。消费者提供的`secret`和令牌回调用于计算签名，如果与请求签名不匹配，则认证失败。
 
 最后的“认证回调”是可选的，可以通过检查请求中使用的时间戳和随机数来防止重复的攻击。
 
@@ -81,5 +81,5 @@ app.get('/api/me',
   });
 ```
 
-使用`token`策略的passport.authenticate\(\)去保护API。 API通常不需要session，因此可以禁用它们。
+使用`token`策略的`passport.authenticate()`去保护`API`。 `API`通常不需要`session`，因此可以禁用它们。
 

@@ -66,5 +66,5 @@ app.get('/api/me',
   });
 ```
 
-使用`bearer`策略的`passport.authenticate()`去保护API。 API通常不需要`session`，因此可以禁用它们。
+使用`bearer`策略的`passport.authenticate()`去保护API。 `API`通常不需要`session`，因此可以禁用它们。
 
