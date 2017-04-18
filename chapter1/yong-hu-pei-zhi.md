@@ -10,21 +10,26 @@
 
 `name` {`Object`}
 
-     `famileName` {`String`}     用户的姓氏
+```
+ famileName {String}     用户的姓氏
 
-     `givenName` {`String`}     用户的名称
+ givenName {String}     用户的名称
 
-     `middleName` {`String`}     用户的中间名
+ middleName {String}     用户的中间名
+```
 
 `emails` {`Array`}\[n\]
 
-     `value` {`String`}    实际的电子邮件地址
-
-     `type` {`String`}    电子邮件地址（家庭，工作等）的类型
+```
+value {String}    实际的电子邮件地址
+type {String}    电子邮件地址（家庭，工作等）的类型
+```
 
 `photos` {`Array`}\[n\]
 
-     `vaule` {`String`}   图片的地址
+```
+ vaule {String}   图片的地址
+```
 
 注: 不是所有上述字段都可以从每个服务提供商获得，一些提供商可能包含这里未描述的其他信息，有关详细信息，请参阅`provider-specific`文档
 
